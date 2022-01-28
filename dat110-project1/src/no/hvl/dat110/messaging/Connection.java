@@ -38,20 +38,17 @@ public class Connection {
 		
 		// TODO - START
 		// encapsulate the data contained in the message and write to the output stream
-		byte[] modMessage = message.getData();
 		
 		try {
 			// Skriver en kodet melding til outStream
-			outStream.write(message.encode());
+			outStream.write(MessageUtils.encapsulate(message));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 		if (true)
 			throw new UnsupportedOperationException(TODO.method());
-			
-		// ????
-		// TODO - END
+	
 
 	}
 
@@ -64,16 +61,14 @@ public class Connection {
 		// read a segment from the input stream and decapsulate into message
 		
 		// Medlingene inneholder 128 byte / alstå 1024 bits
-		data = new byte[1024];
+		data = new byte[127];
 		
 		try {
 			// Fra instream, les data fra melding
 			inStream.read(data);
-			message.decode(data);
-			// Alternativ
-//			message =
+			message = MessageUtils.decapsulate(data);
+
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

@@ -10,7 +10,9 @@ public class Message {
 		
 		// TODO - START
 		
-		// Hvis meldingen er større eller lik segmentsize (128) er meldingen for lang
+		/**
+		 *  Hvis meldingen er større eller lik segmentsize (128) er meldingen for lang
+		 */
 		if(data != null && data.length <= MessageConfig.SEGMENTSIZE){
 			this.data = data;
 		} else {
@@ -29,16 +31,4 @@ public class Message {
 	public byte[] getData() {
 		return this.data; 
 	}
-
-	public byte[] encode() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void decode(byte[] data2) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 }
