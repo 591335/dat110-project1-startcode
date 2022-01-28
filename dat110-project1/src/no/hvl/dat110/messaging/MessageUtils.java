@@ -21,6 +21,18 @@ public class MessageUtils {
 		// encapulate/encode the payload data of the message and form a segment
 		// according to the segment format for the messagin layer
 		
+		/**
+		 * Får ut lengden på meldingen som skal sendes
+		 */
+		data = message.getData();
+		int lengde = data.length;
+		
+		byte[] encoded = new byte[MessageConfig.SEGMENTSIZE];
+		
+		for (int i = lengde; i>0; i--) {
+			encoded[i] = data[i-1];
+		}
+		
 		if (true)
 			throw new UnsupportedOperationException(TODO.method());
 			
