@@ -1,6 +1,7 @@
 package no.hvl.dat110.messaging;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 import no.hvl.dat110.TODO;
 
@@ -12,31 +13,24 @@ public class MessageUtils {
 	public static final String MESSAGINGHOST = "localhost";
 	
 	public static byte[] encapsulate(Message message) {
-		
-		byte[] segment = null;
-		byte[] data;
-		
 		// TODO - START
 		
 		// encapulate/encode the payload data of the message and form a segment
 		// according to the segment format for the messagin layer
 		
+		byte[] segment = new byte[SEGMENTSIZE];
+		byte[] data;
+		
 		/**
 		 * Får ut lengden på meldingen som skal sendes
 		 */
 		data = message.getData();
-		int lengde = data.length;
 		
-		byte[] encoded = new byte[MessageConfig.SEGMENTSIZE];
-		
-		for (int i = lengde; i>0; i--) {
-			encoded[i] = data[i-1];
+		for (int i = 0; i < data.length; i++) {
+			segment[i+1] = data[i];
 		}
+		segment[0] = (byte) data.length;
 		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-			
-		// TODO - END
 		return segment;
 		
 	}
@@ -44,14 +38,15 @@ public class MessageUtils {
 	public static Message decapsulate(byte[] segment) {
 
 		Message message = null;
+		// segment[0] mottar lengden på pakke
+		int lengde = segment[0];
+		byte[] data = new byte[lengde];
 		
-		// TODO - START
-		// decapsulate segment and put received data into a message
+		for (int i = 0; i < data.length; i++) {
+			data[i] = segment[i+1];
+		}
 		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO - END
+		message = new Message(data);
 		
 		return message;
 		

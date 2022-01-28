@@ -19,13 +19,10 @@ public class Message {
 			System.out.println("The message is to long");
 		}
 		
-		if (true)
-			throw new UnsupportedOperationException(TODO.constructor("Message"));
-			
-		// TODO - END
 	}
 	
 	public Message() {
+		super();
 	}
 
 	public byte[] getData() {
