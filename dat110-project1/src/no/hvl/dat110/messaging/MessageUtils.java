@@ -21,6 +21,13 @@ public class MessageUtils {
 		// encapulate/encode the payload data of the message and form a segment
 		// according to the segment format for the messagin layer
 		
+		data = message.getData();
+		for(int i = 0; i < data.length; i++) {
+			segment[i+1] = data[i];
+		}
+		segment[0] = (byte) data.length;
+		
+		
 		if (true)
 			throw new UnsupportedOperationException(TODO.method());
 			
