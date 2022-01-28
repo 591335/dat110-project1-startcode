@@ -12,7 +12,7 @@ public class Message {
 		
 		if (true)
 			throw new UnsupportedOperationException(TODO.constructor("Message"));
-			
+			int tall = 123;
 		// TODO - END
 	}
 
