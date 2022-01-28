@@ -15,6 +15,8 @@ public class MessageUtils {
 		
 		byte[] segment = null;
 		byte[] data;
+		data = message.getData();
+
 		
 		// TODO - START
 		

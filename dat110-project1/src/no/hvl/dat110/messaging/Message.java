@@ -7,14 +7,10 @@ public class Message {
 	private byte[] data;
 
 	public Message(byte[] data) {
-		
-		// TODO - START
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.constructor("Message"));
-			
-		// TODO - END
-	}
+		if(data != null && data.length < MessageConfig.SEGMENTSIZE) {
+		this.data = data;
+		}
+	} 
 
 	public byte[] getData() {
 		return this.data; 
