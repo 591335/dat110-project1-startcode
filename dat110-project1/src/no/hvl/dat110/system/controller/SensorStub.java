@@ -15,13 +15,9 @@ public class SensorStub extends RPCLocalStub {
 		
 		int temp = 0;
 		
-		// TODO - START
-		// implement marshalling, call and unmarshalling for read RPC method
+		byte[] request = RPCUtils.marshallInteger(temp);
 		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
 		
-		// TODO - END
 		
 		return temp;
 	}

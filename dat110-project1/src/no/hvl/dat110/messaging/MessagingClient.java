@@ -25,21 +25,16 @@ public class MessagingClient {
 		try {
 			clientSocket = new Socket(server, port);
 		} catch (UnknownHostException e) {
-			System.out.println("IoException: " + e.getMessage());
+			System.out.println("Server ikke funnet: " + e.getMessage());
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("IIoException: " + e.getMessage());
+			System.out.println("IOException: " + e.getMessage());
 			e.printStackTrace();
 		} 
 		Connection connection = new Connection(clientSocket);
 		
-		// TODO - START
 		// create TCP socket for client and connection
 		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO - END
 		return connection;
 	}
 }

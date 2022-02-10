@@ -35,14 +35,6 @@ public class MessagingServer {
 			e.printStackTrace();
 		}
 		Connection connection = new Connection(clientSocket);
-
-		// TODO - START
-		// accept TCP connection on welcome socket and create connection
-
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO - END
 		
 		return connection;
 
