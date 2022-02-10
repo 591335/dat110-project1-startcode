@@ -7,9 +7,7 @@ public class Message {
 	private byte[] data;
 
 	public Message(byte[] data) {
-		
-		// TODO - START
-		
+	
 		/**
 		 *  Hvis meldingen er større eller lik segmentsize (128) er meldingen for lang
 		 */

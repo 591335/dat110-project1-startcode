@@ -47,10 +47,27 @@ public class RPCServer {
 		   // - invoke the method
 		   // - send back message containing RPC reply
 			
-		   if (true)
-				throw new UnsupportedOperationException(TODO.method());
+		   requestmsg = connection.receive();
+		   byte[] identifier = requestmsg.getData();
 		   
-		   // TODO - END
+		   /*
+		    * Hvis identifier er større enn 0, sett rpcid til index 0
+		    * hvis ikke, sett rpcid til 0
+		    * blir rpcid satt til 0, stop loop
+		    */
+		   if (identifier.length > 0) {
+		   rpcid = identifier[0]; 
+		   } else {
+			   rpcid = 0;
+		   }
+		   
+		   RPCRemoteImpl finn = services.get(rpcid);
+		   
+		   if (finn != null) {
+			   byte[] svar = finn.invoke(identifier);
+			   replymsg = new Message (svar);
+			   connection.send(replymsg);
+		   }
 		   
 		   if (rpcid == RPCCommon.RPIDSTOP) {
 			   stop = true;
