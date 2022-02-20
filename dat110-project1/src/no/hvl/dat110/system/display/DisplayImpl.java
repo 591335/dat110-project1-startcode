@@ -8,22 +8,29 @@ import no.hvl.dat110.rpc.RPCServer;
 public class DisplayImpl extends RPCRemoteImpl {
 
 	public DisplayImpl(byte rpcid, RPCServer rpcserver) {
-		super(rpcid,rpcserver);
+		super(rpcid, rpcserver);
 	}
+
 	public void write(String message) {
 		System.out.println("DISPLAY:" + message);
 	}
-	
+
 	public byte[] invoke(byte[] params) {
-		
-		byte[] reply;
-		
-		String melding = RPCUtils.unmarshallString(params); 
-				
-		write(melding);
-		
-		reply = RPCUtils.marshallVoid();
-		
+
+		byte[] reply = null;
+
+		// TODO - START:
+		// implement unmarshalling, call, and marshall for write RPC method
+		// look at how this is done in the SensorImpl class for the read method
+
+		String write = RPCUtils.unmarshallString(params);
+
+		write(write);
+
+		reply = RPCUtils.marshallString(write);
+
+		// TODO - END
+
 		return reply;
 	}
 }
